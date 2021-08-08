@@ -10,6 +10,9 @@ declare global {
 //that function is going to run before all
 //of our tests start to be execudet
 let mongo: any;
+
+jest.mock('../nats-wrapper');
+
 beforeAll(async () => {
   process.env.JWT_KEY = "kunefe";
 
@@ -24,6 +27,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+  jest.clearAllMocks();
   const collections = await mongoose.connection.db.collections();
 
   for (let collection of collections) {
