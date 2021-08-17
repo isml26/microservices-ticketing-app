@@ -5,6 +5,8 @@ import {
   requireAuth,
 } from "@ig26tickets/common";
 import { Order, OrderStatus } from "../../models/order";
+import { OrderCancelledPublisher } from "../../events/publishers/order-cancelled-publisher";
+import { natsWrapper } from "../../nats-wrapper";
 
 const router = express.Router();
 
@@ -22,9 +24,15 @@ router.delete("/:orderId", requireAuth, async (req: Request, res: Response) => {
   order.status = OrderStatus.Cancelled;
   await order.save();
   // publishing an eveht that it was canceled
-  
-  res.status(204).send(order);
+  new OrderCancelledPublisher(natsWrapper.client).publish({
+    id: order.id,
+    version: order.version,
+    ticket: {
+      id: order.ticket.id,
+    },
+  });
 
+  res.status(204).send(order);
 });
 
 export { router as deleteOrderRouter };
