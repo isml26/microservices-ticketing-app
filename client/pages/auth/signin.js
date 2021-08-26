@@ -21,9 +21,12 @@ const Signup = () => {
   
   
     return (
-      <form onSubmit={onSubmit}>
+      
+      <div className='page'>
+      <div className="form">
+      <form onSubmit={onSubmit} className="form-group">
       <h1>Sign In</h1>
-      <div className="form-group">
+      <div>
         <label>Email Address</label>
         <input
           value={email}
@@ -31,7 +34,7 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <div className="form-group">
+      <div>
         <label>Password</label>
         <input
           value={password}
@@ -41,9 +44,15 @@ const Signup = () => {
         />
       </div>
       {errors}
+      <div className="form-button">
       <button className="btn btn-primary">Sign In</button>
-    </form>)
-
+      </div>
+    </form>
+      </div>
+      <p>Welcome to TicketX</p> 
+      </div>
+   
+    )
   };
    
   export default Signup;

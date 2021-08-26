@@ -21,6 +21,8 @@ const Signup = () => {
   
   
     return (
+      <div className="page">
+      <div className="form">
       <form onSubmit={onSubmit}>
       <h1>Sign Up</h1>
       <div className="form-group">
@@ -41,8 +43,17 @@ const Signup = () => {
         />
       </div>
       {errors}
+      <div className="form-button">
       <button className="btn btn-primary">Sign Up</button>
-    </form>)
+      </div>
+    </form>
+      </div>
+      <p>Welcome to TicketX</p> 
+      </div>
+      
+
+    
+    )
 
   };
    
