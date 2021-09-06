@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: tickets
-          image: ismail26/tickets 
+          image: ismail26/tickets
+          imagePullPolicy: Never 
           env:
             - name: NATS_CLIENT_ID
               valueFrom:

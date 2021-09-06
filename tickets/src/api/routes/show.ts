@@ -7,10 +7,10 @@ const router = express.Router();
 
 router.get(
   '/:id',
-  param('id')
-    .custom((idValue) => MongooseTypes.ObjectId.isValid(idValue))
-    .withMessage('id must be a valid MongoDB ObjectId'),
-  validateRequest,
+  // param('id')
+  //   .custom((idValue) => MongooseTypes.ObjectId.isValid(idValue))
+  //   .withMessage('id must be a valid MongoDB ObjectId'),
+  // validateRequest,
   async (req: Request, res: Response) => {
     const ticket = await Ticket.findById(req.params.id);
  

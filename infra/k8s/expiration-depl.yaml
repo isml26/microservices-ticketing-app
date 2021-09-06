@@ -15,6 +15,7 @@ spec:
       containers:
         - name: expiration
           image: ismail26/expiration
+          imagePullPolicy: Never
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
